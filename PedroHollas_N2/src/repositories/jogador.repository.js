@@ -73,6 +73,14 @@ class JogadorRepository {
     await this.pool.query('DELETE FROM jogadores WHERE codigo_jogador = ?', [codigo]);
     return jogador;
   }
+
+  async buscarPorHabilidade(termo) {
+    const linhas = await this.pool.query(
+      'SELECT * FROM jogadores WHERE ativo = 1 AND habilidade_principal LIKE ? ORDER BY codigo_jogador',
+      [`%${escaparLike(termo)}%`]
+    );
+    return linhas.map(mapear);
+  }
 }
 
 module.exports = JogadorRepository;

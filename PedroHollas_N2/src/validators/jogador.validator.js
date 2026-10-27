@@ -75,4 +75,12 @@ function validarTermoBusca(valor) {
   return valor.trim();
 }
 
-module.exports = { validarCodigo, validarDadosJogador, validarTipoExclusao, validarTermoBusca };
+function validarTermoHabilidade(valor) {
+  if (typeof valor !== 'string' || valor.trim() === '') {
+    throw new ValidacaoError(['Informe o parâmetro "habilidade" na busca. Exemplo: /jogadores/busca?habilidade=agilidade']);
+  }
+
+  return valor.trim();
+}
+
+module.exports = { validarCodigo, validarDadosJogador, validarTipoExclusao, validarTermoBusca, validarTermoHabilidade };

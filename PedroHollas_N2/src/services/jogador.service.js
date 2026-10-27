@@ -4,6 +4,7 @@ const {
   validarDadosJogador,
   validarTipoExclusao,
   validarTermoBusca,
+  validarTermoHabilidade
 } = require('../validators/jogador.validator');
 
 class JogadorService {
@@ -68,6 +69,11 @@ class JogadorService {
       throw new NaoEncontradoError(`Jogador com código ${id} não encontrado`);
     }
     return jogador;
+  }
+
+  async buscarPorHabilidade(termo) {
+    const habilidade = validarTermoHabilidade(termo);
+    return this.repository.buscarPorHabilidade(habilidade);
   }
 }
 

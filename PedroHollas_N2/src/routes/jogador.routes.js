@@ -11,7 +11,8 @@ function criarRotasJogador(controller) {
   router.put('/:codigo', controller.atualizar);
   router.patch('/:codigo', controller.atualizarParcialmente);
   router.delete('/:codigo', controller.excluir);
-
+  router.get('/busca/habilidade', controller.buscarPorHabilidade);
+  
   return router;
 }
 

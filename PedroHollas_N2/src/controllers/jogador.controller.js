@@ -66,6 +66,15 @@ class JogadorController {
       next(erro);
     }
   };
+
+  buscarPorHabilidade = async (req, res, next) => {
+    try {
+      const jogadores = await this.service.buscarPorHabilidade(req.query.habilidade);
+      res.status(200).json({ total: jogadores.length, jogadores });
+    } catch (erro) {
+      next(erro);
+    }
+  };
 }
 
 module.exports = JogadorController;
